@@ -8,5 +8,5 @@ RSpec.describe Post, type: :model do
       expect(post).to have_attributes(title: "New Post Title", body: "New Post Body")
     end
   end
-  
+
 end
