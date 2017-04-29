@@ -16,13 +16,13 @@ posts = Post.all
   )
 end
 
-Post.find_or_create_by!(
-  title: "Logan Writes Ruby",
-  body: "With the help of Stack Overflow, Bloc, and his faithful mentor Raj"
+unique_post = Post.find_or_create_by!(
+    title: "Logan Writes Ruby",
+    body: "With the help of Stack Overflow, Bloc, and his faithful mentor Raj"
 )
 
-Comment.find_or_create_by!(
-  post: "Logan Writes Ruby",
+unique_comment = Comment.find_or_create_by!(
+  post: unique_post,
   body: "I'm writing a comment on Logan's post yaaaaaay"
 )
 
