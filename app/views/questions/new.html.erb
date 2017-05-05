@@ -1,0 +1,23 @@
+<h1>New Question</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= form_for @question do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Enter question title" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "form-control", placeholder: "Enter your question" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :resolved %>
+      <%= f.check_box :resolved %>
+    </div> 
+    <div class="form-group">
+      <%= f.submit "Save", class: "btn btn-success" %>
+    </div>
+    <% end %>
+  </div>
+</div>
