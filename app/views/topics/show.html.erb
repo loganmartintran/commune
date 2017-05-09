@@ -10,13 +10,17 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <%= link_to post.title, post %>
+            <%= link_to post.title, topic_post_path(@topic, post) %>
           </h4>
+          <small>
+            submitted <%= time_ago_in_words(post.created_at) %> ago <br>
+            <%= post.comments.count %> Comments
+          </small>
         </div>
       </div>
     <% end %>
   </div>
   <div class="col-md-4">
-    <%= link_to "New Post", new_post_path(@topic), class: 'btn btn-success' %>
+    <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
   </div>
 </div>
