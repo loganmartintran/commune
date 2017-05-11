@@ -9,11 +9,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    @topic = Topic.find(params[:topic_id])
     @post = Post.new
     @post.title = params[:post][:title]
     @post.body = params[:post][:body]
-    @topic = Topic.find(params[:topic_id])
-
     @post.topic = @topic
 
     if @post.save
@@ -38,7 +37,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Post was updated."
       redirect_to [@post.topic, @post]
     else
-      flash[:alert] = "There was an error saving your changes. Please try again."
+      flash.now[:alert] = "There was an error saving your changes. Please try again."
       render :edit
     end
   end
@@ -50,7 +49,7 @@ class PostsController < ApplicationController
       flash[:notice] = "\"#{@post.title}\" was deleted successfully."
       redirect_to @post.topic
     else
-      flash[:alert] = "There was an error deleting the post. Please try again."
+      flash.now[:alert] = "There was an error deleting the post. Please try again."
       render :show
     end
   end

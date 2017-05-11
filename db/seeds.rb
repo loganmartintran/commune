@@ -10,6 +10,15 @@ end
 
 topics = Topic.all
 
+#Create 30 fake sponsored posts
+30.times do
+  SponsoredPost.create!(
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph,
+    price: rand(100)
+  )
+end
+
 #Create 50 fake posts
 50.times do
   Post.create!(
@@ -52,6 +61,7 @@ unique_comment = Comment.find_or_create_by!(
 
 puts "Seed finished"
 puts "#{Topic.count} topics created"
+puts "#{SponsoredPost.count} sponsored posts created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Question.count} questions created"
