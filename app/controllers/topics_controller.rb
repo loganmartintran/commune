@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
       flash[:notice] = "Topic was saved successfully."
       redirect_to @topic
     else
-      flash.now[:alert] = "Error creating topic. Please try again."
+      flash.now[:alert] = "There was an error creating topic. Please try again."
       render :new
     end
   end
