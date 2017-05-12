@@ -41,5 +41,5 @@ RSpec.describe User, type: :model do
       expect(user.name).to eq("Logan Tran")
     end
   end
-  
+
 end

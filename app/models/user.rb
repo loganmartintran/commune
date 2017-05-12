@@ -12,11 +12,12 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def format_name
-    name = self.name
-    name = name.split
-    name.each do |n|
-    n.capitalize!
+    if name
+      array = []
+      name.split.each do |n|
+        array << n.capitalize
+      end
+      self.name = array.join(" ")
     end
-  return name.join(" ")
   end
 end
