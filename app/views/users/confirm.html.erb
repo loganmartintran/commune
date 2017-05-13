@@ -9,8 +9,10 @@
 </div>
 
 <div class="row">
-  <div class="col-md-4">
-    <%= link_to "Yes", {controller: "users", action: "create", params: params}, class: 'btn btn-success', method: :post %>
-    <%= link_to "No", {controller: "users", action: "new",}, class: 'btn btn-failure' %>
+  <div class="col-md-1">
+    <%= button_to "Yes", {controller: "users", action: "create", params: params}, class: 'btn btn-success', method: :post %>
+  </div>
+  <div class="col-md-1">
+    <%= button_to "No", {controller: "users", action: "new",}, class: 'btn btn-failure' %>
   </div>
 </div>
