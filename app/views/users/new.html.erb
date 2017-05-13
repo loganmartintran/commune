@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-8">
-    <%= form_for @user do |f| %>
+    <%= form_for @user, url: { action: :confirm } do |f| %>
       <% if @user.errors.any? %>
         <div class="alert alert-danger">
           <h4><%= pluralize(@user.errors.count, "Error") %>.</h4>
