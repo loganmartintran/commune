@@ -51,12 +51,17 @@ RSpec.describe UsersController, type: :controller do
       post :create, user: new_user_attributes
       expect(assigns(:user).password_confirmation).to eq new_user_attributes[:password_confirmation]
     end
+
+    it "logs the user in after sign up" do
+      post :create, user: new_user_attributes
+      expect(session[:user_id]).to eq assigns(:user).id
+    end
   end
 
   describe "POST confirm" do
     it "returns HTTP success" do
       post :confirm, user: new_user_attributes
       expect(response).to have_http_status(:success)
-    end 
+    end
   end
 end
