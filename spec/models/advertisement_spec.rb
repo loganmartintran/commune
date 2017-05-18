@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Advertisement, type: :model do
-  let(:Advertisement) { Advertisement.create! }
+  let(:advertisement) { Advertisement.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, price: rand(50)) }
 
   describe "attributes" do
     it "should respond to title" do

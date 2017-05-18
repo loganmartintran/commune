@@ -1,5 +1,16 @@
 require 'random_data'
 
+#Create Users
+5.times do
+  User.create!(
+    name: RandomData.random_name,
+    email: RandomData.random_email,
+    password: RandomData.random_sentence
+  )
+end
+
+users = User.all
+
 #Create 10 Topics
 10.times do
   Topic.create!(
@@ -22,6 +33,7 @@ end
 #Create 50 fake posts
 50.times do
   Post.create!(
+    user: users.sample,
     topic: topics.sample,
     title: RandomData.random_sentence,
     body: RandomData.random_paragraph
@@ -49,6 +61,8 @@ end
 
 #Create a unique post
 unique_post = Post.find_or_create_by!(
+    topic: topics.sample,
+    user: users.sample,
     title: "Logan Writes Ruby",
     body: "With the help of Stack Overflow, Bloc, and his faithful mentor Raj"
 )
@@ -59,7 +73,14 @@ unique_comment = Comment.find_or_create_by!(
   body: "I'm writing a comment on Logan's post yaaaaaay"
 )
 
+user = User.first
+user.update_attributes!(
+  email: 'loganmartintran@icloud.com',
+  password: 'helloworld'
+)
+
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{SponsoredPost.count} sponsored posts created"
 puts "#{Post.count} posts created"
