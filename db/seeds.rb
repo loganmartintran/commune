@@ -73,10 +73,20 @@ unique_comment = Comment.find_or_create_by!(
   body: "I'm writing a comment on Logan's post yaaaaaay"
 )
 
-user = User.first
-user.update_attributes!(
-  email: 'loganmartintran@icloud.com',
-  password: 'helloworld'
+#Create an admin user
+admin = User.create!(
+  name: 'Admin User',
+  email: 'admin@example.com',
+  password: 'helloworld',
+  role: 'admin'
+)
+
+#Create a member
+member = User.create!(
+  name: 'Member User',
+  email: 'member@example.com',
+  password: 'helloworld',
+  role: 'member'
 )
 
 puts "Seed finished"
