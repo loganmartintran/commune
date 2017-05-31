@@ -9,9 +9,13 @@ Rails.application.routes.draw do
     resources :sponsored_posts, except: [:index]
   end
 
+  resources :posts, only: [] do
+    resources :comments, only: [:create, :destroy]
+  end
+
   resources :users, only: [:new, :create,]
 
-  resource :session, only: [:new, :create, :destroy]
+  resources :session, only: [:new, :create, :destroy]
 
   post 'users/confirm' => 'users#confirm'
 

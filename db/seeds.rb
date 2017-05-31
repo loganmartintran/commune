@@ -45,6 +45,7 @@ posts = Post.all
 #Create 100 fake comments
 100.times do
   Comment.create!(
+    user: users.sample,
     post: posts.sample,
     body: RandomData.random_paragraph
   )
@@ -69,6 +70,7 @@ unique_post = Post.find_or_create_by!(
 
 #Create a unique comment
 unique_comment = Comment.find_or_create_by!(
+  user: users.sample,
   post: unique_post,
   body: "I'm writing a comment on Logan's post yaaaaaay"
 )
