@@ -1,6 +1,8 @@
 <h1><%= @topic.name %></h1>
-<% if user_is_authorized_for_topics? %>
+<% if user_is_authorized_to_edit_topics? %>
   <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
+<% end %>
+<% if user_is_authorized_to_delete_topics? %>
   <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this topic and all of its related posts?' } %>
 <% end %>
 

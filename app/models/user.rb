@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  enum role: [:member, :admin]
+  enum role: [:member, :moderator, :admin]
 
   def format_name
     if name
