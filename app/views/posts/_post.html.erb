@@ -1,4 +1,5 @@
 <div class="media">
+  <%= render partial: 'votes/voter', locals: { post: post } %>
   <div class="media-body">
     <h4 class="media-heading">
       <%= link_to post.title, topic_post_path(@topic, post) %>

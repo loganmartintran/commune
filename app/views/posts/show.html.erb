@@ -1,10 +1,12 @@
-<h1>
-  <%= @post.title %> <br>
-    <small>
-      submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
-    </small>
-</h1>
-
+<div>
+  <%= render partial: 'votes/voter', locals: { post: @post } %>
+  <h1>
+    <%= @post.title %> <br>
+      <small>
+        submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
+      </small>
+  </h1>
+</div>
 <div class="row">
   <div class="col-md-8">
     <p><%= @post.body %></p>
@@ -25,4 +27,15 @@
       <%= link_to "Delete Post", [@post.topic, @post], method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this post?'} %>
     </div>
   <% end %>
+  <div class="col-md-4">
+    <h3>
+      <%= pluralize(@post.points, 'point') %>
+      <div>
+        <small>
+          <%= pluralize(@post.up_votes, 'up vote') %>,
+          <%= pluralize(@post.down_votes, 'down vote') %>
+        </small>
+      </div>
+    </h3>
+  </div>
 </div>
