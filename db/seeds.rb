@@ -54,14 +54,14 @@ posts = Post.all
   )
 end
 
-#Create 50 fake questions
-50.times do
-  Question.create!(
-    title: RandomData.random_sentence,
-    body: RandomData.random_paragraph,
-    resolved: false
-  )
-end
+# #Create 50 fake questions
+# 50.times do
+#   Question.create!(
+#     title: RandomData.random_sentence,
+#     body: RandomData.random_paragraph,
+#     resolved: false
+#   )
+# end
 
 #Create a unique post
 unique_post = Post.find_or_create_by!(
@@ -101,4 +101,4 @@ puts "#{SponsoredPost.count} sponsored posts created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Vote.count} votes created"
-puts "#{Question.count} questions created"
+# puts "#{Question.count} questions created"
