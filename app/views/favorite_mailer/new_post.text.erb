@@ -1,0 +1,5 @@
+You are now follwing your post "<%= @post.title %>", and you will be notified of all activity. If you do not want to receive these emails, unfavorite <%= link_to "post", topic_post_url(@post.topic, @post) %>
+
+By: <%= @post.user.name %>
+
+Visit the post online at: <%= topic_post_url(@post.topic, @post) %>
