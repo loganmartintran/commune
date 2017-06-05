@@ -24,7 +24,7 @@
     <% end %>
     <% if user_is_authorized_to_delete_post?(@post) %>
       <%= link_to "Delete Post", [@post.topic, @post], method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this post?'} %>
-    <% end %> 
+    <% end %>
   </div>
   <div class="col-md-4">
     <h3>
@@ -36,5 +36,8 @@
         </small>
       </div>
     </h3>
+    <% if current_user %>
+      <%= render partial: 'favorites/favorite', locals: { post: @post }%>
+    <% end %>
   </div>
 </div>
