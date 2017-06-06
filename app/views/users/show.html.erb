@@ -20,7 +20,22 @@
 </div>
 
 <h2>Posts</h2>
-<%= render @user.posts %>
+<%if @user.posts.count >= 1 %>
+  <%= render @user.posts %>
+<% else %>
+  <p><%= @user.name %> has not submitted any posts.</p>
+<% end %>
 
 <h2>Comments</h2>
-<%= render @user.comments %>  
+<%if @user.comments.count >= 1 %>
+  <%= render @user.comments %>
+<% else %>
+  <p><%= @user.name %> has not commented on any posts.</p>
+<% end %>
+
+<%if @user.favorites.count >= 1 %>
+  <h2>Favorites</h2>
+  <% @user.favorites.each do |favorite| %>
+  <% link_to favorite.post.title, topic_post_path(favorite.post.topic, post) %>
+  <% end %>
+<% end %>
