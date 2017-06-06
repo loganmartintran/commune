@@ -35,7 +35,7 @@ RSpec.describe FavoritesController, type: :controller do
       end
 
       it "creates a favorite for the current user and the specificed post" do
-        expect(my_user.favorites.find_by_post_id(my_post.id)).to be_nil
+        expect(my_user.favorites.find_by_post_id(my_post.id)).to be_truthy
         post :create, { post_id: my_post.id }
         expect(my_user.favorites.find_by_post_id(my_post.id)).not_to be_nil
       end
