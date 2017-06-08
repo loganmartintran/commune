@@ -14,26 +14,28 @@ RSpec.describe Comment, type: :model do
 
   describe "attributes" do
     it "has a body attribute" do
-      expect(comment).to have_attributes(body: "Comment Body")
+      expect(comment).to have_attributes(body: comment.body)
     end
   end
 
   describe "after_create" do
     before do
       @another_comment = Comment.new(body: 'Comment Body', post: post, user: user)
+
+      ActionMailer::Base.delivery_method = :test
+      ActionMailer::Base.perform_deliveries = true
+      ActionMailer::Base.deliveries = []
     end
 
     it "sends an email to users who have favorited the post" do
       favorite = user.favorites.create(post: post)
-      expect(FavoriteMailer).to receive(:new_comment).with(user, post, @another_comment).and_return(double(deliver_now: true))
-
       @another_comment.save!
+      expect(ActionMailer::Base.deliveries.length).to eq(2)
     end
 
     it "does not send emails to users who haven't favorited the post" do
-      expect(FavoriteMailer).not_to receive(:new_comment)
-
       @another_comment.save!
+      expect(ActionMailer::Base.deliveries.length).to eq(1)
     end
   end
 end
