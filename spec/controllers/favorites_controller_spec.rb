@@ -52,7 +52,7 @@ RSpec.describe FavoritesController, type: :controller do
         favorite = my_user.favorites.where(post: my_post).create
         expect( my_user.favorites.find_by_post_id(my_post.id) ).not_to be_nil
         delete :destroy, { post_id: my_post.id, id: favorite.id }
-        expect( my_user.favorites.find_by_post_id(my_post.id) ).to be_nil
+        expect{ my_user.favorites.delete(my_post.id) }.to change(my_user.favorites,:count).by(-1)
       end
     end
   end
