@@ -1,5 +1,5 @@
 <% if favorite = current_user.favorite_for(post) %>
-  <%= link_to [post, favorite], class: 'btn btn-danger', method: :delete do %>
+  <%= link_to [post, favorite], class: 'btn btn-danger', method: :delete, data: {:confirm => "You sure?" } do %>
     <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
   <% end %>
 <% else %>

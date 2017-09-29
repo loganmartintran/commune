@@ -14,6 +14,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
+    puts "destroy action is getting called!"
     post = Post.find(params[:post_id])
     favorite = current_user.favorites.find(params[:id])
 
